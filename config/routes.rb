@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
-  resources :drivers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      resources :drivers, only: [] do
+        collection do
+          post :register
+        end
+        member do
+          post :send_location
+        end
+      end
+      resources :passengers, only: [] do
+        collection do
+          post :available_cabs
+        end
+      end
+    end
+  end
 end

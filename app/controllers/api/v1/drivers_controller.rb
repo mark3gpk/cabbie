@@ -1,7 +1,4 @@
 class Api::V1::DriversController < ApplicationController
-
-  skip_before_action :verify_authenticity_token
-
   def register
     driver = Driver.new driver_params
     if driver.save
